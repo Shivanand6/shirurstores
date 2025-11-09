@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Shirur Kirani Stores — Navanagar Hubli</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #f7fbfe;
+    --card:#ffffff;
+    --text:#08202c;
+    --muted:#6b8aa1;
+    --blue-1:#0ea5d6;
+    --blue-2:#0288d1;
+    --accent:#ff7a18;
+    --section-border: rgba(29,155,240,0.18);
+    --radius: 16px;
+    --nav-radius: 26px;
+    --shadow: rgba(10,20,40,0.06);
+    --max-width:1200px;
+  }
+  body.dark{
+    --bg:#071022;
+    --card:#072033;
+    --text:#e6f6ff;
+    --muted:#9ed7ff;
+    --blue-1:#05607f;
+    --blue-2:#0078a8;
+    --accent:#ff9a43;
+    --section-border: rgba(40,130,200,0.12);
+    --shadow: rgba(0,0,0,0.6);
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(180deg,var(--bg) 0%, #eaf6fb 100%);color:var(--text);-webkit-font-smoothing:antialiased;scroll-behavior:smooth}
+  a{color:inherit}
+
+  /* Header */
+  header{
+    position:sticky; top:12px; z-index:80; margin:10px 12px;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:10px 16px; border-radius:var(--nav-radius);
+    background: rgba(255,255,255,0.96);
+    box-shadow:0 8px 28px var(--shadow);
+    border:1px solid rgba(2,136,209,0.06);
+  }
+  body.dark header{ background: rgba(8,22,32,0.78); border:1px solid rgba(255,255,255,0.04); }
+
+  .brand{display:flex;gap:12px;align-items:center}
+  .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--blue-1),var(--blue-2));display:flex;align-items:center;justify-content:center;color:white;font-weight:800;font-size:20px;box-shadow:0 8px 22px rgba(2,136,209,0.14)}
+  .brand .texts{display:flex;flex-direction:column;line-height:1}
+  .brand .title{font-weight:800;color:var(--blue-2)}
+  .brand .sub{font-size:12px;color:var(--muted);margin-top:2px}
+
+  /* Nav */
+  .nav-wrap{display:flex;align-items:center;gap:12px}
+  nav.primary{display:flex;gap:8px;align-items:center}
+  nav.primary a{padding:8px 12px;border-radius:14px;text-decoration:none;color:var(--text);font-weight:600;transition:all .16s}
+  nav.primary a:hover{background:linear-gradient(90deg,#e8f9ff,#f1fbff);transform:translateY(-2px);color:var(--blue-2)}
+  body.dark nav.primary a:hover{background:rgba(255,255,255,0.03)}
+
+  .controls{display:flex;align-items:center;gap:8px}
+
+  /* dropdown */
+  .dropdown{position:relative}
+  .drop-btn{padding:8px 12px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);background:transparent;cursor:pointer;font-weight:700}
+  body.dark .drop-btn{border-color:rgba(255,255,255,0.06)}
+  .drop-panel{position:absolute;right:0;top:44px;min-width:210px;background:var(--card);border-radius:10px;padding:10px;box-shadow:0 16px 40px rgba(2,136,209,0.12);border:1px solid var(--section-border);display:none;z-index:90}
+  .drop-panel.show{display:block}
+  .lang-item{padding:8px;border-radius:8px;cursor:pointer;font-weight:700}
+  .lang-item:hover{background:linear-gradient(90deg,#eef9ff,#f8fbff)}
+
+  /* separate theme toggle */
+  .theme-toggle{padding:8px 10px;border-radius:10px;border:1px solid rgba(0,0,0,0.06);cursor:pointer;font-weight:700}
+  body.dark .theme-toggle{border-color:rgba(255,255,255,0.06)}
+
+  /* HERO */
+  .hero{display:flex;gap:24px;align-items:stretch;max-width:var(--max-width);margin:18px auto;padding:20px}
+  .hero-left{flex:1;background:linear-gradient(180deg,var(--blue-1),var(--blue-2));padding:28px;border-radius:var(--radius);box-shadow:0 12px 30px var(--shadow);border:1px solid var(--section-border);position:relative;overflow:hidden}
+  .hero-right{width:520px;min-width:220px;background:var(--card);border-radius:var(--radius);padding:18px;display:flex;align-items:center;justify-content:center;border:1px solid var(--section-border);box-shadow:0 10px 30px var(--shadow)}
+
+  /* large three-line title */
+  .hero-title{display:flex;flex-direction:column;gap:-6px;line-height:0.84}
+  .hero-title .line{font-weight:900;color:#fff;font-size:68px;letter-spacing:1px;text-transform:none;-webkit-text-stroke:2px #000;text-shadow:0 3px 0 rgba(0,0,0,0.6)}
+  @media (max-width:720px){ .hero-title .line{font-size:42px} .hero-right{width:100%} }
+
+  .hero-meta{margin-top:14px;font-weight:700;color:rgba(255,255,255,0.95);font-size:15px}
+
+  /* contact icons under title */
+  .contact-inline{display:flex;gap:12px;align-items:center;margin-top:12px}
+  .contact-inline a{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,0.95);font-weight:700;text-decoration:none}
+  .contact-inline svg{width:18px;height:18px;display:block}
+
+  .hero-cta{margin-top:18px;display:flex;gap:12px}
+  .btn{background:linear-gradient(90deg,var(--accent),#ff4b00);padding:10px 16px;border-radius:20px;color:white;border:none;font-weight:800;cursor:pointer}
+  .ghost{background:transparent;border:2px solid rgba(255,255,255,0.12);padding:9px 14px;border-radius:18px;color:white;font-weight:700}
+
+  .mock-img{width:100%;max-width:420px;border-radius:10px;object-fit:cover}
+
+  /* main sections */
+  main{max-width:var(--max-width);margin:14px auto;padding:0 18px 40px}
+  section.site{background:var(--card);border-radius:var(--radius);padding:18px;margin:16px 0;border:1px solid var(--section-border);box-shadow:0 8px 28px var(--shadow);transition:transform .18s}
+  section.site:hover{transform:translateY(-6px)}
+  .section-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .section-head h3{margin:0;color:var(--blue-2)}
+
+  /* owner */
+  .owner-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .owner-photo{width:160px;height:160px;border-radius:14px;object-fit:cover;border:6px solid #fff;box-shadow:0 12px 40px rgba(2,136,209,0.12)}
+
+  /* payments */
+  .payments { display:flex;flex-direction:column;gap:12px }
+  .payments .tagline { font-weight:800;color:var(--blue-2); margin-bottom:6px; }
+  .payments .logos-text { font-weight:700;color:var(--text); background:linear-gradient(180deg,#fff,#f4fbff); padding:10px;border-radius:10px;border:1px solid rgba(2,136,209,0.04); display:inline-block }
+  .payments .small-note { color:var(--muted); font-weight:700; font-size:13px; margin-top:6px; }
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .contact-card{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#f8feff);border:1px solid rgba(2,136,209,0.04)}
+
+  .map-embed iframe{width:100%;height:360px;border-radius:10px;border:0}
+
+  /* photos */
+  .photos-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .photo{width:100%;height:220px;object-fit:cover;border-radius:12px;border:1px solid var(--section-border);box-shadow:0 8px 24px var(--shadow)}
+
+  /* feedback */
+  .stars{display:inline-flex;gap:8px;align-items:center}
+  .star{font-size:30px;color:#cbd5e1;cursor:pointer;transition:transform .12s,color .12s}
+  .star.selected{color:gold;transform:translateY(-3px)}
+  .rating-result{margin-top:8px;font-weight:700;color:var(--blue-2)}
+
+  footer{max-width:var(--max-width);margin:24px auto;text-align:center;color:var(--muted);padding:18px}
+
+  /* responsive tweaks */
+  @media (max-width:980px){
+    .hero{flex-direction:column;padding:12px}
+    .hero-right{width:100%}
+    nav.primary{display:none}
+    .contact-grid{grid-template-columns:1fr}
+    header{padding:10px}
+    .payments .logos-text{width:100%}
+  }
+  @media (min-width:2000px){
+    .hero-title .line{font-size:110px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <div class="logo">SK</div>
+    <div class="texts">
+      <div class="title">Shirur Kirani Stores</div>
+      <div class="sub">Navanagar, Hubli</div>
+    </div>
+  </div>
+
+  <div class="nav-wrap">
+    <nav class="primary" aria-label="Main">
+      <a href="#home" id="nav-home">Home</a>
+      <a href="#about" id="nav-about">About</a>
+      <a href="#owner" id="nav-owner">Owner's Words</a>
+      <a href="#payments" id="nav-payments">Payments</a>
+      <a href="#contact" id="nav-find">Find Us</a>
+      <a href="#feedback" id="nav-feedback">Feedback</a>
+      <a href="#photos" id="nav-photos">Photos</a>
+    </nav>
+
+    <div class="controls">
+      <!-- Language dropdown -->
+      <div class="dropdown" id="langDropdown" style="margin-right:8px">
+        <button class="drop-btn" id="dropBtn" aria-haspopup="true" aria-expanded="false">EN ▾</button>
+        <div class="drop-panel" id="dropPanel" role="menu" aria-hidden="true">
+          <div style="font-weight:800;margin-bottom:8px">Language</div>
+          <div class="lang-item" data-lang="en" role="menuitem">EN — English</div>
+          <div class="lang-item" data-lang="hi" role="menuitem">HI — हिंदी</div>
+          <div class="lang-item" data-lang="kn" role="menuitem">KN — ಕನ್ನಡ</div>
+        </div>
+      </div>
+
+      <!-- Theme toggle (separate) -->
+      <button class="theme-toggle" id="themeToggle" title="Toggle dark / light">🌙 Dark</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero" id="home" role="region" aria-label="Home">
+  <div class="hero-left">
+    <div class="hero-title" aria-hidden="false">
+      <div class="line">Shirur</div>
+      <div class="line">Kirani</div>
+      <div class="line">Stores</div>
+    </div>
+
+    <div class="hero-meta" id="hero-meta">Karnataka Circle, Navanagar-Hubli, 580025</div>
+
+    <!-- clickable phone + mail under title -->
+    <div class="contact-inline" aria-hidden="false" style="margin-top:10px">
+      <a href="tel:+919611094379" aria-label="Call 9611094379">
+        <!-- phone icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M6.62 10.79a15.466 15.466 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.29 21 3 13.71 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57.12.36.02.76-.24 1.01l-2.21 2.21z"/></svg>
+        <span>9611094379</span>
+      </a>
+
+      <a href="mailto:anandshirur70@gmail.com" aria-label="Email anandshirur70@gmail.com">
+        <!-- mail icon -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>anandshirur70@gmail.com</span>
+      </a>
+    </div>
+
+    <!-- small CTA (kept minimal because you asked to remove lines) -->
+    <div class="hero-cta" style="margin-top:16px">
+      <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Map</button>
+      <button class="ghost" onclick="document.getElementById('photos').scrollIntoView({behavior:'smooth'})">Photos</button>
+    </div>
+  </div>
+
+  <div class="hero-right" aria-hidden="true">
+    <!-- decorative image -->
+    <img src="as.jpg" class="mock-img" alt="Grocery assortment">
+  </div>
+</div>
+
+<main>
+  <!-- About -->
+  <section id="about" class="site" aria-labelledby="about-h">
+    <div class="section-head"><h3 id="about-h">About</h3></div>
+    <p id="about-text"><strong>Shirur Kirani Stores was started in 2000 to serve people of Navanagar Hubli with quality products in affordable prices.</strong></p>
+  </section>
+
+  <!-- Owner's Words -->
+  <section id="owner" class="site" aria-labelledby="owner-h">
+    <div class="section-head"><h3 id="owner-h">Owner's Words</h3></div>
+    <div class="owner-row">
+      <img src="as.jpg" alt="Owner — Anand Shirur" class="owner-photo" onerror="this.style.filter='grayscale(1)';">
+      <div>
+        <div id="owner-quote" style="font-style:italic;font-size:18px">"Where every customer is a family — 'Our shop, your trust'."</div>
+        <div style="margin-top:10px;font-weight:800;color:var(--blue-2)">— Shirur Brothers</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Payments (NEW: placed below Owner's Words) -->
+  <section id="payments" class="site" aria-labelledby="payments-h">
+    <div class="section-head"><h3 id="payments-h">Payments</h3></div>
+    <div class="payments">
+      <div id="payments-tagline" class="tagline">We accept all kinds of UPI for safe and effective transactions — supporting Digital India.</div>
+
+      <!-- Replaced images with text listing of payment options as requested -->
+      <div id="payments-logos-text" class="logos-text" aria-hidden="false" aria-label="Payment methods">
+        GooglePay — PhonePe — Paytm — AmazonPay — BHIM UPI
+      </div>
+
+      <div id="payments-note" class="small-note">
+        Tip: For a faster checkout, keep your UPI app ready — we provide digital receipts on request.
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact / Map -->
+  <section id="contact" class="site" aria-labelledby="contact-h">
+    <div class="section-head"><h3 id="contact-h">Find Us</h3></div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h4 id="contact-name">Shirur Kirani Stores</h4>
+        <p id="contact-address">Navanagar, Hubli</p>
+        <p id="contact-open" style="color:var(--muted)">Open: Mon - Sun · 7am - 10pm</p>
+        <p style="margin-top:10px;display:flex;gap:8px;align-items:center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#0288d1" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.466 15.466 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.29 21 3 13.71 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57.12.36.02.76-.24 1.01l-2.21 2.21z"/></svg>
+          <a href="tel:+919611094379" style="color:var(--blue-2);font-weight:700;text-decoration:none">9611094379</a>
+        </p>
+        <p style="display:flex;gap:8px;align-items:center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff7a18" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <a href="mailto:anandshirur70@gmail.com" style="color:var(--accent);font-weight:700;text-decoration:none">anandshirur70@gmail.com</a>
+        </p>
+      </div>
+
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps?q=Navanagar%20Hubli&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing Navanagar Hubli"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feedback -->
+  <section id="feedback" class="site" aria-labelledby="feedback-h">
+    <div class="section-head"><h3 id="feedback-h">Feedback</h3></div>
+    <div>
+      <p id="feedback-q">How was your last visit or order?</p>
+      <div class="stars" id="starContainer" role="radiogroup" aria-label="Star rating">
+        <div class="star" data-value="1" title="1 star">★</div>
+        <div class="star" data-value="2" title="2 star">★</div>
+        <div class="star" data-value="3" title="3 star">★</div>
+        <div class="star" data-value="4" title="4 star">★</div>
+        <div class="star" data-value="5" title="5 star">★</div>
+      </div>
+
+      <div style="margin-top:12px">
+        <button class="btn" id="submitRating">Submit Rating</button>
+        <button class="ghost" style="margin-left:10px" onclick="clearRating()">Clear</button>
+      </div>
+
+      <div class="rating-result" id="ratingResult" style="display:none"></div>
+    </div>
+  </section>
+
+  <!-- Photos -->
+  <section id="photos" class="site" aria-labelledby="photos-h">
+    <div class="section-head"><h3 id="photos-h">Photos</h3></div>
+    <div class="photos-grid" aria-live="polite">
+      <img class="photo" src="11.jpg" alt="Photo 11" onerror="this.style.filter='grayscale(1)';">
+      <img class="photo" src="12.jpg" alt="Photo 12" onerror="this.style.filter='grayscale(1)';">
+      <img class="photo" src="13.jpg" alt="Photo 13" onerror="this.style.filter='grayscale(1)';">
+      <img class="photo" src="14.jpg" alt="Photo 14" onerror="this.style.filter='grayscale(1)';">
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div id="footer-text">Shirur Kirani Stores — Serving Navanagar since 2000</div>
+</footer>
+
+<script>
+  // Language dropdown open/close
+  const dropBtn = document.getElementById('dropBtn');
+  const dropPanel = document.getElementById('dropPanel');
+  dropBtn.addEventListener('click', e => {
+    e.stopPropagation();
+    const show = dropPanel.classList.toggle('show');
+    dropBtn.setAttribute('aria-expanded', show ? 'true' : 'false');
+  });
+  document.addEventListener('click', (e) => {
+    if (!document.getElementById('langDropdown').contains(e.target)) {
+      dropPanel.classList.remove('show');
+      dropBtn.setAttribute('aria-expanded','false');
+    }
+  });
+
+  // Translations (complete for visible strings)
+  const translations = {
+    en: {
+      nav: ['Home','About','Owner\'s Words','Payments','Find Us','Feedback','Photos'],
+      headings: {
+        about: 'About',
+        owner: 'Owner\'s Words',
+        payments: 'Payments',
+        contact: 'Find Us',
+        feedback: 'Feedback',
+        photos: 'Photos'
+      },
+      heroMeta: 'Karnataka Circle, Navanagar-Hubli, 580025',
+      aboutText: 'Shirur Kirani Stores was started in 2000 to serve people of Navanagar Hubli with quality products in affordable prices.',
+      ownerQuote: '"Where every customer is a family — \'Our shop, your trust\'."',
+      paymentsTagline: 'We accept all kinds of UPI for safe and effective transactions — supporting Digital India.',
+      paymentsLogosText: 'GooglePay — PhonePe — Paytm — AmazonPay — BHIM UPI',
+      paymentsNote: 'Tip: For a faster checkout, keep your UPI app ready — we provide digital receipts on request.',
+      contactName: 'Shirur Kirani Stores',
+      contactAddress: 'Navanagar, Hubli',
+      contactOpen: 'Open: Mon - Sun · 7am - 10pm',
+      feedbackQ: 'How was your last visit or order?',
+      footer: 'Shirur Kirani Stores — Serving Navanagar since 2000'
+    },
+    hi: {
+      nav: ['होम','हमारे बारे में','मालिक के शब्द','भुगतान','स्थान','प्रतिक्रिया','फोटो'],
+      headings: {
+        about: 'हमारे बारे में',
+        owner: 'मालिक के शब्द',
+        payments: 'भुगतान',
+        contact: 'स्थान',
+        feedback: 'प्रतिक्रिया',
+        photos: 'फोटो'
+      },
+      heroMeta: 'कर्नाटक सर्कल, नवनगर-हुबळी, 580025',
+      aboutText: 'शिरुर किराना स्टोर्स की स्थापना 2000 में नवनगर हुबळी के लोगों को गुणवत्ता वाले सामान सस्ती कीमतों पर उपलब्ध कराने के लिए हुई थी।',
+      ownerQuote: '"जहाँ हर ग्राहक परिवार है — \'हमारी दुकान, आपका भरोसा\'।"',
+      paymentsTagline: 'हम सुरक्षित और प्रभावी लेन-देन के लिए सभी प्रकार के UPI स्वीकार करते हैं — डिजिटल इंडिया का समर्थन।',
+      paymentsLogosText: 'GooglePay — PhonePe — Paytm — AmazonPay — BHIM UPI',
+      paymentsNote: 'तेज़ चेकआउट के लिए, कृपया अपना UPI ऐप तैयार रखें — हम डिजिटल रसीद प्रदान करते हैं।',
+      contactName: 'शिरुर किराना स्टोर्स',
+      contactAddress: 'नवनगर, हुबळी',
+      contactOpen: 'खुला: सोम - रवि · 7am - 10pm',
+      feedbackQ: 'आपकी पिछली खरीद कैसी थी?',
+      footer: 'शिरुर किराना स्टोर्स — 2000 से नवनगर की सेवा में'
+    },
+    kn: {
+      nav: ['ಮುಖಪುಟ','ನಮ್ಮ ಬಗ್ಗೆ','ಮಾಲೀಕನ ಮಾತುಗಳು','ಪಾವತಿಗಳು','ಸ್ಥಳ','ಪ್ರತಿಕ್ರಿಯೆ','ಫೋಟೋಗಳು'],
+      headings: {
+        about: 'ನಮ್ಮ ಬಗ್ಗೆ',
+        owner: 'ಮಾಲೀಕನ ಮಾತುಗಳು',
+        payments: 'ಪಾವತಿಗಳು',
+        contact: 'ಸ್ಥಳ',
+        feedback: 'ಪ್ರತಿಕ್ರಿಯೆ',
+        photos: 'ಫೋಟೋಗಳು'
+      },
+      heroMeta: 'ಕರ್ನಾಟಕ ಸರ್ಕಲ್, ನವನಗರ-हुಬಳ್ಳಿ, 580025',
+      aboutText: 'ಶಿರೂರು ಕಿರಾಣಿ ಸ್ಟೋರ್ಸ್ ಅನ್ನು 2000 ರಲ್ಲಿ ನವನಗರ ಹುಬಳ್ಳಿಯ ಜನರಿಗೆ ಗುಣಮಟ್ಟದ ಉತ್ಪನ್ನಗಳನ್ನು ಕಡಿಮೆ ದರದಲ್ಲಿ ಪೂರೈಸಲು ಪ್ರಾರಂಭಿಸಿದೆ.',
+      ownerQuote: '"ಎಲ್ಲಿ ಪ್ರತಿಯೊಬ್ಬ ಗ್ರಾಹಕ ಕುಟುಂಬವೇ — \'ನಮ್ಮ ಅಂಗಡಿ, ನಿಮ್ಮ ನಂಬಿಕೆ\'."',
+      paymentsTagline: 'ಭದ್ರ ಮತ್ತು ಪರಿಣಾಮಕಾರಿಯಾದ ವಹಿವಾಟಿಗಾಗಿ ನಾವು ಎಲ್ಲಾ ರೀತಿಯ UPI ದೇವರೆ ಮಾಡುತ್ತೇವೆ — ಡಿಜಿಟಲ್ ಇಂಡಿಯಾ ಬೆಂಬಲ.',
+      paymentsLogosText: 'GooglePay — PhonePe — Paytm — AmazonPay — BHIM UPI',
+      paymentsNote: 'ವೇಗವಾದ ಚೆಕ್‌ಔಟ್‌ಗಾಗಿ ದಯವಿಟ್ಟು ನಿಮ್ಮ UPI ಅಪ್‌ಗಳನ್ನು ತಯಾರಿಟ್ಟುಕೊಳ್ಳಿ — ನಾವು ಡಿಜಿಟಲ್ ರಸೀದೆಗಳನ್ನು ನೀಡುತ್ತೇವೆ.',
+      contactName: 'ಶಿರೂರು ಕಿರಾಣಿ ಸ್ಟೋರ್ಸ್',
+      contactAddress: 'ನವನಗರ, ಹುಬ್ಬಳ್ಳಿ',
+      contactOpen: 'ತೆರೆದಿದೆ: ಸೋಮ - ರವಿ · 7am - 10pm',
+      feedbackQ: 'ನಿಮ್ಮ ಕೊನೆಯ ಖರೀದಿ ಹೇಗಿತ್ತು?',
+      footer: 'ಶಿರೂರು ಕಿರಾಣಿ ಸ್ಟೋರ್ಸ್ — 2000 ರಿಂದ ನವನಗರಕ್ಕೆ ಸೇವೆ'
+    }
+  };
+
+  // elements to update
+  const navEls = [
+    document.getElementById('nav-home'),
+    document.getElementById('nav-about'),
+    document.getElementById('nav-owner'),
+    document.getElementById('nav-payments'),
+    document.getElementById('nav-find'),
+    document.getElementById('nav-feedback'),
+    document.getElementById('nav-photos')
+  ];
+  const headingEls = {
+    about: document.getElementById('about-h'),
+    owner: document.getElementById('owner-h'),
+    payments: document.getElementById('payments-h'),
+    contact: document.getElementById('contact-h'),
+    feedback: document.getElementById('feedback-h'),
+    photos: document.getElementById('photos-h')
+  };
+  // other elements
+  const heroMeta = document.getElementById('hero-meta');
+  const aboutText = document.getElementById('about-text');
+  const ownerQuote = document.getElementById('owner-quote');
+  const paymentsTagline = document.getElementById('payments-tagline');
+  const paymentsLogosText = document.getElementById('payments-logos-text');
+  const paymentsNote = document.getElementById('payments-note');
+  const contactName = document.getElementById('contact-name');
+  const contactAddress = document.getElementById('contact-address');
+  const contactOpen = document.getElementById('contact-open');
+  const feedbackQ = document.getElementById('feedback-q');
+  const footerText = document.getElementById('footer-text');
+
+  function applyLang(code){
+    const t = translations[code] || translations.en;
+
+    // navs
+    navEls.forEach((el, i) => { if (el && t.nav[i]) el.textContent = t.nav[i]; });
+
+    // headings
+    Object.keys(headingEls).forEach(k => {
+      if (headingEls[k] && t.headings[k]) headingEls[k].textContent = t.headings[k];
+    });
+
+    // other text
+    if (heroMeta) heroMeta.textContent = t.heroMeta;
+    if (aboutText) aboutText.textContent = t.aboutText;
+    if (ownerQuote) ownerQuote.textContent = t.ownerQuote;
+    if (paymentsTagline) paymentsTagline.textContent = t.paymentsTagline;
+    if (paymentsLogosText) paymentsLogosText.textContent = t.paymentsLogosText;
+    if (paymentsNote) paymentsNote.textContent = t.paymentsNote;
+    if (contactName) contactName.textContent = t.contactName;
+    if (contactAddress) contactAddress.textContent = t.contactAddress;
+    if (contactOpen) contactOpen.textContent = t.contactOpen;
+    if (feedbackQ) feedbackQ.textContent = t.feedbackQ;
+    if (footerText) footerText.textContent = t.footer;
+
+    // update dropdown label
+    const label = code === 'en' ? 'EN ▾' : (code === 'hi' ? 'HI ▾' : 'KN ▾');
+    dropBtn.textContent = label;
+    localStorage.setItem('site_lang', code);
+  }
+
+  // init lang from localStorage
+  const savedLang = localStorage.getItem('site_lang') || 'en';
+  applyLang(savedLang);
+
+  // wire language selection
+  document.querySelectorAll('.lang-item').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const code = el.getAttribute('data-lang');
+      applyLang(code);
+      dropPanel.classList.remove('show');
+      dropBtn.setAttribute('aria-expanded','false');
+    });
+  });
+
+  // Theme toggle separate
+  const themeToggle = document.getElementById('themeToggle');
+  function setTheme(dark){
+    if (dark){
+      document.body.classList.add('dark');
+      themeToggle.textContent = '☀️ Light';
+      localStorage.setItem('site_theme','dark');
+    } else {
+      document.body.classList.remove('dark');
+      themeToggle.textContent = '🌙 Dark';
+      localStorage.setItem('site_theme','light');
+    }
+  }
+  const savedTheme = localStorage.getItem('site_theme') || 'light';
+  setTheme(savedTheme === 'dark');
+  themeToggle.addEventListener('click', ()=>{
+    const isDark = document.body.classList.toggle('dark');
+    setTheme(isDark);
+  });
+
+  // Ratings (localStorage)
+  const stars = Array.from(document.querySelectorAll('.star'));
+  let current = 0;
+  const ratingResult = document.getElementById('ratingResult');
+
+  function paintStars(n){
+    stars.forEach(s => s.classList.toggle('selected', Number(s.dataset.value) <= n));
+  }
+  stars.forEach(s => {
+    s.addEventListener('mouseenter', ()=> paintStars(Number(s.dataset.value)));
+    s.addEventListener('click', ()=> { current = Number(s.dataset.value); paintStars(current); });
+  });
+  document.querySelector('.stars').addEventListener('mouseleave', ()=> paintStars(current));
+
+  document.getElementById('submitRating').addEventListener('click', ()=>{
+    if (!current || current < 1){
+      // translate alert message a bit — show in current language if possible
+      const lang = localStorage.getItem('site_lang') || 'en';
+      const alerts = { en:'Please select a star rating first.', hi:'कृपया पहले एक स्टार रेटिंग चुनें।', kn:'ದಯವಿಟ್ಟು ಮೊದಲೇ ಸ್ಟಾರ್ ರೇಟಿಂಗ್ ಅನ್ನು ಆರಿಸಿಕೊಳ್ಳಿ.' };
+      alert(alerts[lang] || alerts.en);
+      return;
+    }
+    const key = 'shirur_ratings_final_v1';
+    const prev = JSON.parse(localStorage.getItem(key) || '[]');
+    prev.push({rating: current, ts: Date.now()});
+    localStorage.setItem(key, JSON.stringify(prev));
+    const sum = prev.reduce((a,b)=>a + b.rating, 0);
+    const avg = (sum / prev.length).toFixed(2);
+    ratingResult.style.display = 'block';
+    ratingResult.textContent = `${avg} ★ (${prev.length})`;
+  });
+
+  function clearRating(){ current = 0; paintStars(0); ratingResult.style.display = 'none'; }
+  window.clearRating = clearRating;
+
+  // Smooth nav fallback
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      // allow external links like mailto/tel to work normally
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      const target = document.querySelector(href);
+      if (target) target.scrollIntoView({behavior:'smooth'});
+    });
+  });
+
+  // close dropdown on esc
+  document.addEventListener('keydown', (e)=>{
+    if (e.key === 'Escape'){ dropPanel.classList.remove('show'); dropBtn.setAttribute('aria-expanded','false'); }
+  });
+
+  // restore rating display (if any) on load
+  (function restoreRatingDisplay(){
+    try{
+      const key = 'shirur_ratings_final_v1';
+      const prev = JSON.parse(localStorage.getItem(key) || '[]');
+      if (prev.length){
+        const sum = prev.reduce((a,b)=>a + b.rating, 0);
+        const avg = (sum / prev.length).toFixed(2);
+        ratingResult.style.display = 'block';
+        ratingResult.textContent = `${avg} ★ (${prev.length})`;
+      }
+    }catch(e){}
+  })();
+</script>
+</body>
+</html>
